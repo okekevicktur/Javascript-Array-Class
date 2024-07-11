@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Understanding Array" />
+    <title>Arrays</title>
+    <script>
+      fruits = [];
+
+      function validateInput() {
+        const userInput = document.getElementById("fruitName").value;
+        if (!userInput) {
+          document.getElementById("message").innerHTML =
+            "Please type in a fruit";
+          return;
+        } else {
+          return userInput;
+        }
+      }
+
+      function addFruit(fruitName) {
+        if (fruitName) {
+          if (fruits.includes(fruitName)) {
+            document.getElementById("message").innerHTML =
+              fruitName + " is added to the array";
+            fruits.push(fruitName);
+            return (document.getElementById("fruitArray").innerHTML =
+              "updated Array : " + fruits);
+          }
+          // else {
+          //     document.getElementById("message").innerHTML =
+          //       fruitName + " already added to the array";
+          //   }
+        }
+        document.getElementById("fruitArray").innerHTML =
+          "updated Array : " + fruits;
+      }
+      function getFruitIndex(fruitName) {
+        if (fruitName) {
+          if (fruits.includes(fruitName)) {
+            document.getElementById("message").innerHTML =
+              "The index of " + fruitName + " is " + fruits.indexOf(fruitName);
+
+            return (document.getElementById("fruitArray").innerHTML =
+              "The Fruit Array : " + fruits);
+          } else {
+            document.getElementById("message").innerHTML =
+              "Hey!, fruit does not exist";
+          }
+        }
+      }
+      function removeFruit(fruitName) {
+        if (fruitName) {
+          if (fruits.includes(fruitName)) {
+            fruits.pop(fruitName);
+            document.getElementById("message").innerHTML =
+              fruitName + " is successfully deleted";
+
+            return (document.getElementById("fruitArray").innerHTML =
+              "The Fruit Array is now : " + fruits);
+          } else {
+            document.getElementById("message").innerHTML =
+              "Hey!, fruit does not exist";
+          }
+        }
+      }
+    </script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+
+  <body style="background-color: bisque">
+    <header
+      style="
+        background-color: brown;
+        color: white;
+        width: 100%;
+        display: flex;
+        font-size: 25px;
+        justify-content: center;
+        padding: 15px 10px;
+      "
+    >
+      Array in Javascript
+    </header>
+    <main
+      style="
+        width: 80%;
+        margin: 20px auto;
+        padding: 30px 15px;
+        border-radius: 10px;
+        background-color: coral;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        font-size: 18px;
+      "
+    >
+      <div style="display: flex; gap: 15px; align-items: center">
+        <span>Enter Fruit Name: </span>
+        <input
+          type="text"
+          name=""
+          id="fruitName"
+          style="
+            border: none;
+            padding: 5px 6px;
+            width: 280px;
+            border-radius: 3px;
+            outline: green solid 2px;
+          "
+        />
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 5px">
+        <span
+          style="
+            padding: 8px;
+            background-color: bisque;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+          "
+          >Current Fruit in the Array are listed below:
+        </span>
+        <code
+          id="fruitArray"
+          style="
+            background-color: burlywood;
+            padding: 15px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            width: 100%;
+          "
+          >Fruit Array is Empty</code
+        >
+        <p id="message" style="padding: 10px">
+          Message: Nothing is happening yet
+        </p>
+      </div>
+
+      <div
+        style="
+          display: flex;
+          justify-content: space-around;
+
+          padding: 10px;
+        "
+      >
+        <button
+          style="
+            border: none;
+            background-color: darkgreen;
+            color: azure;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 20px;
+          "
+          onclick="addFruit(validateInput())"
+        >
+          Add Fruit
+        </button>
+        <button
+          style="
+            border: none;
+            background-color: rgb(107, 7, 158);
+            color: azure;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 20px;
+          "
+          onclick="getFruitIndex(validateInput())"
+        >
+          Get Fruit Index
+        </button>
+        <button
+          style="
+            border: none;
+            background-color: rgb(168, 7, 7);
+            color: azure;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 20px;
+          "
+          onclick="removeFruit(validateInput())"
+        >
+          Delete Fruit
+        </button>
+      </div>
+    </main>
+  </body>
+</html>
